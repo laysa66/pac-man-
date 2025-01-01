@@ -1,0 +1,224 @@
+body {
+	font-family: Arial, sans-serif;
+	text-align: center;
+	background-color: black;
+	color: white;
+	margin: 0;
+	padding: 0;
+  }
+  h1 {
+	margin: 20px 0;
+  }
+    
+  .game-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px auto;
+  }
+  #grid {
+	display: grid;
+	grid-template-columns: repeat(15, 40px);
+	grid-template-rows: repeat(15, 40px);
+	gap: 2px;
+	background-color: black;
+	border: 2px solid white;
+  }
+  .cell {
+	width: 40px;
+	height: 40px;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+  }
+.ghost {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%; 
+  background-color: white; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px; 
+}
+
+.ghost::before {
+  content: "👻";
+}
+  .cell.wall {
+	background-color: blue;
+  }
+  .cell.pacman {
+	background-color: black ;
+  }
+ 
+  .cell.food {
+	background-color: black;
+  }
+  
+  .food-dot {
+	width: 10px;
+	height: 10px;
+	background: white;
+	border-radius: 50%;
+	position: absolute;
+  }
+ 
+ 
+ .food-cherry { 
+  width: 10px;
+  height: 10px;
+  background-color: red; 
+  border-radius: 50%;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: bounceCherry 1s infinite alternate; 
+}
+ 
+@keyframes bounceCherry {
+  0% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(5px);
+  }
+}
+
+#game-over {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+#game-message {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+#replay-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: yellow;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#replay-button:hover {
+  background-color: #ffcc00;
+}
+
+
+.pacman-icon {
+	width: 95%;
+	height: 95%;
+	border-radius: 50%;
+	background-color: #f2d648;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .pacman-mouth {
+	background-color: #000;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+	animation-name: eat;
+	animation-duration: 0.7s;
+	animation-iteration-count: infinite;
+  }
+  
+  @keyframes eat {
+	0% {
+	  clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+	}
+	25% {
+	  clip-path: polygon(100% 60%, 44% 48%, 100% 40%);
+	}
+	50% {
+	  clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
+	}
+	75% {
+	  clip-path: polygon(100% 59%, 44% 48%, 100% 35%);
+	}
+	100% {
+	  clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+	}
+  }
+  
+  .pacman-left {
+	transform: rotate(180deg);
+  }
+  
+  .pacman-right {
+	transform: rotate(0deg);
+  }
+  
+  .pacman-up {
+	transform: rotate(-90deg);
+  }
+  
+  .pacman-down {
+	transform: rotate(90deg);
+  }
+  
+  
+  #name-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: black;
+  color: white;
+}
+
+#name-input-container input {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#name-input-container button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: yellow;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#name-input-container button:hover {
+  background-color: #ffcc00;
+}
+#score {
+  font-size: 24px; 
+  font-weight: bold; 
+  color: white; 
+  background-color: black; 
+  padding: 10px; 
+  border: 2px solid yellow;
+  border-radius: 5px; 
+  position: absolute;
+  top: 10px; 
+  left: 10px; 
+  z-index: 1000; 
+}
+
